@@ -11,27 +11,25 @@ using namespace std;
 class Solution{
     
     public:
-    vector<int> help_classmate(vector<int> arr, int n) 
+    vector<int> help_classmate(vector<int> heights, int n) 
     { 
+        vector<int>ans;
         stack<int>st;
         st.push(-1);
-        vector<int>v;
-        for(int i=n-1;i>=0;i--){
-            if(st.top()<arr[i]){
-                v.push_back(st.top());
-                st.push(arr[i]);
-            }
-            else{
-                while(st.top()>=arr[i]){
+    
+            for(int i=n-1;i>=0;i--){
+                while(!st.empty() and st.top()>=heights[i]){
                     st.pop();
                 }
-                v.push_back(st.top());
-                st.push(arr[i]);
-            }
+                if(st.empty()){
+                    st.push(-1);
+                }
+                ans.push_back(st.top());
+                st.push(heights[i]);
+            
         }
-        
-        reverse(v.begin() , v.end());
-        return v;
+        reverse(ans.begin(),ans.end());
+        return ans;
     } 
 };
 
