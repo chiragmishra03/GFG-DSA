@@ -44,11 +44,7 @@ vector<long long> printFirstNegativeInteger(long long int A[],
             {
                 dq.push_back(j);
             }
-            if(j-i+1<K)
-            {
-                j++;
-            }
-            else if(j-i+1==K)
+            if(j-i+1==K)
             {
               if(dq.empty())
               {
@@ -57,15 +53,14 @@ vector<long long> printFirstNegativeInteger(long long int A[],
               else
               {
                   v.push_back(A[dq.front()]);
-                  
                   if(i == dq.front())
                   {
                       dq.pop_front();
                   }
               }
               i++;
-              j++;
             }
+            j++;
         }
         return v;
                                                  
